@@ -6,13 +6,27 @@ import {
   TextInput,
   Image,
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 
-const Search = () => {
+
+const Search = ({ navigation }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+
   return (
     <View style={styles.container}>
       <LinearGradient style={styles.container} colors={['#3eb489', '#90EE90']}>
+        {/* <View
+          style={{
+            height: 100,
+            width: '100%',
+            backgroundColor: '#360b1fff',
+            borderBottomLeftRadius: 20,
+            borderBottomRightRadius: 20,
+            // position: 'absolute',
+            // top: 0,
+          }}
+        ></View> */}
         <Text
           style={{
             color: '#000',
@@ -25,15 +39,13 @@ const Search = () => {
           Search here
         </Text>
 
-        <View
-          style={styles.searchView}
-          onPress={() => navigation.navigate('Search')}
-        >
+        <View style={styles.searchView}>
           <TextInput
             style={styles.searchInput}
             //   focusable={true}
-            autoFocus={true}
+            // autoFocus={true}
             placeholder="Search for recipes..."
+            onChangeText={text => setSearchTerm(text)}
           />
           {/* <Text
             style={{
@@ -45,7 +57,13 @@ const Search = () => {
           >
             Search for recipes...
           </Text> */}
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('RecipesApi', { searchTerm: searchTerm });
+              setSearchTerm('');
+            }}
+          
+          >
             <Image
               style={[
                 styles.profilAndNotiImg,
@@ -68,7 +86,7 @@ const styles = StyleSheet.create({
   },
   searchView: {
     width: '96%',
-    height: 70,
+    height: 60,
     // borderWidth: 1,
     backgroundColor: '#ffffffcc',
 

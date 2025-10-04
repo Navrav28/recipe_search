@@ -124,7 +124,10 @@ const Home = ({ navigation }) => {
     <View style={styles.container}>
       {/* THIS IS A LINEAR GRADIENT BACKGROUND */}
       <LinearGradient style={styles.container} colors={['#3eb489', '#90EE90']}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          nestedScrollEnabled={true}
+        >
           {/* THIS IS A PROFILE AND NOTIFICATION ICONS */}
           <View style={styles.profilAndNoti}>
             <Image
@@ -143,7 +146,7 @@ const Home = ({ navigation }) => {
           <View style={{ marginLeft: 20, height: 100 }}>
             <TypeWriter typing={1} maxDelay={100}>
               <Text style={styles.title}>
-                {`Make your own food,\nstay at `}
+                {`Buy your favorite food ,\nand eat it at `}
                 <Text style={styles.titleHighlight}>{`home!`}</Text>
               </Text>
             </TypeWriter>
@@ -297,7 +300,7 @@ const styles = StyleSheet.create({
   },
   searchView: {
     width: '94%',
-    height: 70,
+    height: 60,
     // borderWidth: 1,
     backgroundColor: '#ffffffcc',
     alignSelf: 'center',
@@ -340,7 +343,7 @@ const styles = StyleSheet.create({
   },
   cards: {
     width: '45%',
-    height: 230,
+    height: 265,
     margin: 10,
     backgroundColor: '#ffffffcc',
     borderRadius: 20,
@@ -350,6 +353,7 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     elevation: 2,
     shadowColor: '#e6e2e2ff',
+    padding:7
     // shadowOffset: {
     //   width: 0,
     //   height: 2,
@@ -359,13 +363,14 @@ const styles = StyleSheet.create({
   },
   cardsImg: {
     width: '100%',
-    height: 130,
+    height: 160,
     // borderRadius: 20,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
     borderBottomRightRadius: 4,
     borderBottomLeftRadius: 4,
     alignSelf: 'center',
+    resizeMode: 'cover',
     // marginTop: 10,
   },
   cardTitle: {
